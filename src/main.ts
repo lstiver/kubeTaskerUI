@@ -17,9 +17,13 @@ import { setupRouterGuard } from '@/router/guard';
 import { setupStore } from '@/store';
 
 import App from './App.vue';
+import Antd from "ant-design-vue";
 
 async function bootstrap() {
   const app = createApp(App);
+
+  // configure antv
+  app.use(Antd);
 
   // Configure store
   // 配置 store
