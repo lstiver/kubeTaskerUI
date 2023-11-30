@@ -329,4 +329,11 @@ export default {
     editTaskLog: '编辑任务日志',
     taskLogList: '任务日志列表',
   },
+  project: {
+    id: '工程编号',
+    name: '工程名称',
+    startedAt: '开始时间',
+    addproject: '添加工程',
+    editproject: '编辑工程信息',
+  },
 };
