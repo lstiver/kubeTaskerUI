@@ -8,6 +8,7 @@
     </CardGrid>
   </Card>
 </template>
+
 <script lang="ts">
   import { Card, CardGrid } from 'ant-design-vue';
   import { defineComponent } from 'vue';
