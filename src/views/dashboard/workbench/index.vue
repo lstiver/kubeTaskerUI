@@ -5,11 +5,11 @@
       <!-- <div class="lg:w-7/10 w-full !mr-4 enter-y">
         <ProjectCard class="enter-y" />
       </div> -->
-      <div class="lg:w-2/10 w-full enter-y">
+      <div class="width:20% enter-y">
         <QuickNav class="enter-y" />
       </div>
       &nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-      <div class="lg:w-7/10 w-full enter-y">
+      <div class="width:65% w-full enter-y">
         <SiteAnalysis class="enter-y" />
       </div>
     </div>

@@ -1,8 +1,11 @@
 <template>
+  <div>
+  <a-button class="editable-add-btn" @click="editalgorithm" style="margin-bottom: 10px" type="primary">编辑算法</a-button>
+  </div>
   <a-table :columns="columns" :data-source="data" @change="onChange">
     <template #headerCell="{ column }">
       <template v-if="column.key === 'id'">
-        <span> 流程编号 </span>
+        <span> 算法编号 </span>
       </template>
     </template>
 
@@ -26,13 +29,13 @@
 </template>
 <script lang="ts" setup>
   import axios from 'axios';
-  import { ref } from 'vue';
+  import { computed, defineComponent, reactive, Ref, ref, UnwrapRef } from 'vue';
   import type { TableColumnType, TableProps } from 'ant-design-vue';
 
   type TableDataType = {
     key: number;
     name: string;
-    cost: number;
+    type: number;
     cpuNum: number;
     status: string;
   };
@@ -45,25 +48,20 @@
       align: "center"
     },
     {
-      title: '流程名称',
+      title: '算法名称',
       dataIndex: 'name',
       key: 'name',
       align: "center"
     },
     {
-      title: '资源消耗',
-      dataIndex: 'cost',
-      key: 'cost',
+      title: '算法类型',
+      dataIndex: 'type',
+      key: 'type',
       align: "center"
     },
+
     {
-      title: 'CPU核数',
-      dataIndex: 'cpuNum',
-      key: 'cpuNum',
-      align: "center"
-    },
-    {
-      title: '流程状态',
+      title: '执行情况',
       key: 'status',
       dataIndex: 'status',
       align: "center",
@@ -85,7 +83,7 @@
     onFilter: (value: string | number | boolean, record: TableDataType) => record.status === value,
     },
     {
-      title: '查看详情',
+      title: '查看结果',
       key: 'action',
       align: "center"
     },
@@ -107,4 +105,9 @@
     }
   };
   load();
+
+  const editalgorithm = () => {
+
+}
+
 </script>
