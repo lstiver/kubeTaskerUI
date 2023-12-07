@@ -1,83 +1,108 @@
 <template>
   <div>
-    <a-button class="editable-add-btn" @click="handleAdd" style="margin-bottom: 8px">新建流程</a-button>
-    <a-table bordered :data-source="dataSource" :columns="columns">
-      <template #name="{ text, record }">
-        <div class="editable-cell">
-          <div v-if="editableData[record.key]" class="editable-cell-input-wrapper">
-            <a-input v-model:value="editableData[record.key].name" @pressEnter="save(record.key)" />
-            <check-outlined class="editable-cell-icon-check" @click="save(record.key)" />
-          </div>
-          <div v-else class="editable-cell-text-wrapper">
-            {{ text || ' ' }}
-            <edit-outlined class="editable-cell-icon" @click="edit(record.key)" />
-          </div>
+    <Card
+    :tab-list="tabListTitle"
+    v-bind="$attrs"
+    :active-tab-key="activeKey"
+    @tab-change="onTabChange"
+  >
+  <VisitAnalysisBar/>
+  </Card>
+ <a-card style="width: 100%">
+  <a-button class="editable-add-btn" @click="editalgorithm" style="margin-bottom: 8px" type="primary">编辑算法</a-button>
+  <a-table bordered :data-source="dataSource" :columns="columns">
+    <template #name="{ text, record }">
+      <div class="editable-cell">
+        <div v-if="editableData[record.key]" class="editable-cell-input-wrapper">
+          <a-input v-model:value="editableData[record.key].name" @pressEnter="save(record.key)" />
+          <check-outlined class="editable-cell-icon-check" @click="save(record.key)" />
         </div>
-      </template>
-      <template #operation="{ record }">
-        <a-button type="primary" ghost  @click="editProcess">编辑</a-button>
-        <a-popconfirm
-          v-if="dataSource.length"
-          title="Sure to delete?"
-          @confirm="onDelete(record.key)"
-        >
-          <a-button type="primary" ghost>删除</a-button>
-        </a-popconfirm>
-      </template>
-    </a-table>
-  </div>
+        <div v-else class="editable-cell-text-wrapper">
+          {{ text || ' ' }}
+          <edit-outlined class="editable-cell-icon" @click="edit(record.key)" />
+        </div>
+      </div>
+    </template>
+    <template #operation="{ record }">
+      <a-popconfirm
+        v-if="dataSource.length"
+        title="Sure to stop?"
+        @confirm="onDelete(record.key)"
+      >
+        <a>停止</a>
+      </a-popconfirm>
+    </template>
+  </a-table>
+     </a-card>
+    </div>
 </template>
 <script lang="ts">
 import { computed, defineComponent, reactive, Ref, ref, UnwrapRef } from 'vue';
 import { CheckOutlined, EditOutlined } from '@ant-design/icons-vue';
 import { cloneDeep } from 'lodash-es';
+import { Card } from 'ant-design-vue'; // 添加 Card 组件引用
+import VisitAnalysisBar from '../dashboard/workbench/components/VisitAnalysisBar.vue';
+
+  const activeKey = ref('tab2');
+
+  const tabListTitle = [
+    {
+      key: 'tab2',
+      tab: '资源消耗情况',
+    },
+  ];
+
+  function onTabChange(key) {
+    activeKey.value = key;
+  }
 
 interface DataItem {
   key: string;
+  number: string;
+  type: string;
   name: string;
-  time: string;
-  state: string;
 }
-
 export default defineComponent({
   components: {
     CheckOutlined,
     EditOutlined,
-  },
+    Card,
+    VisitAnalysisBar,
+},
   setup() {
-    const columns = [
+     const columns = [
       {
-        title: '流程名称',
-        dataIndex: 'name',
+        title: '算法顺序',
+        dataIndex: 'number',
         width: '30%',
         slots: { customRender: 'name' },
       },
         {
-        title: '提交时间',
-        dataIndex: 'time',
+        title: '算法类型',
+        dataIndex: 'type',
       },
       {
-        title: '流程状态',
-        dataIndex: 'state',
+        title: '算法名称',
+        dataIndex: 'name',
       },
       {
-        title: '操作',
-        dataIndex: 'operation',
+        title: '查看结果',
+        dataIndex: 'check',
         slots: { customRender: 'operation' },
       },
     ];
     const dataSource: Ref<DataItem[]> = ref([
       {
         key: '0',
-        name: '流程1',
-        time: '2023-10-24',
-        state: '执行中',
+        number: '1',
+        type: '预处理算法',
+        name: '数据流算法',
       },
       {
-       key: '0',
-        name: '流程2',
-        time: '2023-10-24',
-        state: '已完成',
+        key: '0',
+        number: '2',
+        type: '预处理算法',
+        name: '聚类分析',
       },
     ]);
     const count = computed(() => dataSource.value.length + 1);
@@ -97,14 +122,14 @@ export default defineComponent({
     const handleAdd = () => {
       const newData = {
         key: `${count.value}`,
-        name: `Edward King ${count.value}`,
-        time:'2023-10-11',
-        state: '未执行'
+        number: `Edward King ${count.value}`,
+        type:'2023-10-11',
+        name: '未执行'
       };
       dataSource.value.push(newData);
     };
 
-    const editProcess = () => {
+    const editalgorithm = () => {
 
     }
 
@@ -117,7 +142,10 @@ export default defineComponent({
       count,
       edit,
       save,
-      editProcess
+      editalgorithm,
+      activeKey,
+      tabListTitle,
+      onTabChange
     };
   },
 });

@@ -329,6 +329,14 @@ export default {
     editTaskLog: '编辑任务日志',
     taskLogList: '任务日志列表',
   },
+  process: {
+    id: '流程编号',
+    process: '显示流程',
+    name: '流程名称',
+    settime: '建立时间',
+    addprocess:'新建流程',
+    editprocess:'编辑流程信息',
+  },
   project: {
     id: '工程编号',
     name: '工程名称',
