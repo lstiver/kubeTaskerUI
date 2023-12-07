@@ -125,8 +125,7 @@
 <script lang="ts" setup>
   import { reactive, ref, unref, computed } from 'vue';
 
-  import { Form, Input, Row, Col, Button, Divider, RadioGroup, RadioButton } from 'ant-design-vue';
-  import { GithubFilled, GoogleCircleFilled } from '@ant-design/icons-vue';
+  import { Form, Input, Row, Col, Button, RadioGroup, RadioButton } from 'ant-design-vue';
   import LoginFormTitle from './LoginFormTitle.vue';
 
   import { useI18n } from '/@/hooks/web/useI18n';
@@ -137,7 +136,7 @@
   import { getCaptcha, getEmailCaptcha, getSmsCaptcha } from '/@/api/sys/captcha';
   import { useGo } from '/@/hooks/web/usePage';
   import { PageEnum } from '/@/enums/pageEnum';
-  import { oauthLogin } from '/@/api/sys/oauthProvider';
+  // import { oauthLogin } from '/@/api/sys/oauthProvider';
   import { CountdownInput } from '/@/components/CountDown';
 
   const ACol = Col;
@@ -264,13 +263,13 @@
 
   getCaptchaData();
 
-  async function oauthLoginHandler(provider: string) {
-    const result = await oauthLogin({
-      state: new Date().getMilliseconds() + '-' + provider,
-      provider: provider,
-    });
-    if (result.code === 0) window.open(result.data.URL);
-  }
+  // async function oauthLoginHandler(provider: string) {
+  //   const result = await oauthLogin({
+  //     state: new Date().getMilliseconds() + '-' + provider,
+  //     provider: provider,
+  //   });
+  //   if (result.code === 0) window.open(result.data.URL);
+  // }
 </script>
 
 <style scoped>
