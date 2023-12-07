@@ -111,13 +111,13 @@
       </ACol>
     </ARow>
 
-    <Divider class="enter-x">{{ t('sys.login.otherSignIn') }}</Divider>
+    <!-- <Divider class="enter-x">{{ t('sys.login.otherSignIn') }}</Divider> -->
 
     <div class="flex justify-evenly enter-x" :class="`${prefixCls}-sign-in-way`">
-      <GithubFilled @click="oauthLoginHandler('github')" />
+      <!-- <GithubFilled @click="oauthLoginHandler('github')" /> -->
       <!-- <WechatFilled @click="oauthLoginHandler('wechat')" />
       <AlipayCircleFilled @click="oauthLoginHandler('alipay')" /> -->
-      <GoogleCircleFilled @click="oauthLoginHandler('google')" />
+      <!-- <GoogleCircleFilled @click="oauthLoginHandler('google')" /> -->
       <!-- <TwitterCircleFilled @click="oauthLoginHandler('twitter')" /> -->
     </div>
   </Form>
