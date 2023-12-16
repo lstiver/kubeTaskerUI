@@ -66,8 +66,8 @@ export default {
     signUpFormTitle: '注册',
     forgetFormTitle: '重置密码',
 
-    signInTitle: '分布式后台管理系统',
-    signInDesc: '快速搭建强大的分布式系统',
+    signInTitle: '资源分配管理系统',
+    signInDesc: '基于k8s的资源分配管理系统',
     policy: '我同意xxx隐私政策',
     scanSign: `扫码后点击"确认"，即可完成登录`,
 
