@@ -225,8 +225,8 @@
 </template>
 
 <script>
-import common from "../common/Config";
-import httpClient from '../../utils/request';
+import common from "./config";
+import httpClient from './request';
 //引入xterm终端依赖
 import { Terminal } from 'xterm';
 import { FitAddon } from 'xterm-addon-fit';
@@ -695,10 +695,10 @@ export default {
 .error-status {
   color: rgb(226, 23, 23);
 }
-/deep/ .el-tabs__item {
+.el-tabs__item {
   font-size: 12px;
 }
-/deep/ .el-tabs__header {
+.el-tabs__header {
   margin-bottom: 8px;
 }
 .pod-body-log-card, .pod-body-shell-card {

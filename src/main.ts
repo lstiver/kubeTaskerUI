@@ -4,6 +4,13 @@ import '@/components/VxeTable/src/css/index.scss';
 import 'ant-design-vue/dist/reset.css';
 // Register icon sprite
 import 'virtual:svg-icons-register';
+import ElementPlus from 'element-plus';
+import 'element-plus/dist/index.css';
+import { GlobalCmComponent } from "codemirror-editor-vue3" ;
+// 引入主题 可以从 codemirror/theme/ 下引入多个
+import 'codemirror/theme/idea.css';
+// 引入语言模式 可以从 codemirror/mode/ 下引入多个
+import 'codemirror/mode/yaml/yaml.js';
 
 import { createApp } from 'vue';
 
@@ -24,6 +31,11 @@ async function bootstrap() {
 
   // configure antv
   app.use(Antd);
+
+  app.use(ElementPlus);
+
+  //引入codemirror编辑器
+  app.use(GlobalCmComponent);
 
   // Configure store
   // 配置 store

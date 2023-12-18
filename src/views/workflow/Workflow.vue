@@ -258,7 +258,7 @@
 </template>
 
 <script>
-import common from "./config";
+import common from "../common/Config";
 import httpClient from '../../utils/request';
 export default {
   data() {
@@ -376,7 +376,7 @@ export default {
           required: true,
           message: '你选择匹配类型',
           trigger: 'change'
-        }],
+        }], 
       },
       //删除
       delWorkflowData: {
@@ -631,10 +631,10 @@ export default {
   cursor: pointer;
   font-weight: bold;
 }
-.el-drawer__header {
+/deep/ .el-drawer__header {
   margin-bottom: 0px !important;
 }
-.el-drawer__body {
+/deep/ .el-drawer__body {
   padding: 0px 0px 0px 0px;
 }
 </style>
