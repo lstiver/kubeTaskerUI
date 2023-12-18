@@ -110,14 +110,14 @@
         </Button>
       </ACol>
     </ARow>
-
-    <!-- <Divider class="enter-x">{{ t('sys.login.otherSignIn') }}</Divider> -->
+    
+    <Divider class="enter-x">{{ t('sys.login.otherSignIn') }}</Divider>
 
     <div class="flex justify-evenly enter-x" :class="`${prefixCls}-sign-in-way`">
-      <!-- <GithubFilled @click="oauthLoginHandler('github')" /> -->
+      <GithubFilled @click="oauthLoginHandler('github')" />
       <!-- <WechatFilled @click="oauthLoginHandler('wechat')" />
       <AlipayCircleFilled @click="oauthLoginHandler('alipay')" /> -->
-      <!-- <GoogleCircleFilled @click="oauthLoginHandler('google')" /> -->
+      <GoogleCircleFilled @click="oauthLoginHandler('google')" />
       <!-- <TwitterCircleFilled @click="oauthLoginHandler('twitter')" /> -->
     </div>
   </Form>
@@ -129,14 +129,14 @@
   import LoginFormTitle from './LoginFormTitle.vue';
 
   import { useI18n } from '/@/hooks/web/useI18n';
-
+  import { GithubFilled, GoogleCircleFilled } from '@ant-design/icons-vue';
   import { useUserStore } from '/@/store/modules/user';
   import { LoginStateEnum, useLoginState, useFormRules, useFormValid } from './useLogin';
   import { useDesign } from '/@/hooks/web/useDesign';
   import { getCaptcha, getEmailCaptcha, getSmsCaptcha } from '/@/api/sys/captcha';
   import { useGo } from '/@/hooks/web/usePage';
   import { PageEnum } from '/@/enums/pageEnum';
-  // import { oauthLogin } from '/@/api/sys/oauthProvider';
+  import { oauthLogin } from '/@/api/sys/oauthProvider';
   import { CountdownInput } from '/@/components/CountDown';
 
   const ACol = Col;
@@ -263,13 +263,13 @@
 
   getCaptchaData();
 
-  // async function oauthLoginHandler(provider: string) {
-  //   const result = await oauthLogin({
-  //     state: new Date().getMilliseconds() + '-' + provider,
-  //     provider: provider,
-  //   });
-  //   if (result.code === 0) window.open(result.data.URL);
-  // }
+  async function oauthLoginHandler(provider: string) {
+    const result = await oauthLogin({
+      state: new Date().getMilliseconds() + '-' + provider,
+      provider: provider,
+    });
+    if (result.code === 0) window.open(result.data.URL);
+  }
 </script>
 
 <style scoped>
