@@ -5,8 +5,8 @@ import { h } from 'vue';
 import { Switch } from 'ant-design-vue';
 import { useMessage } from '/@/hooks/web/useMessage';
 import { getRoleList } from '/@/api/sys/role';
-import { getDepartmentList } from '/@/api/sys/department';
-import { getPositionList } from '/@/api/sys/position';
+// import { getDepartmentList } from '/@/api/sys/department';
+// import { getPositionList } from '/@/api/sys/position';
 import { updateUser } from '/@/api/sys/user';
 import { uploadApi } from '/@/api/fms/file';
 
@@ -200,41 +200,41 @@ export const formSchema: FormSchema[] = [
       valueField: 'id',
     },
   },
-  {
-    field: 'departmentId',
-    label: t('sys.department.userDepartment'),
-    component: 'ApiTreeSelect',
-    required: true,
-    componentProps: {
-      api: getDepartmentList,
-      params: {
-        page: 1,
-        pageSize: 1000,
-        name: '',
-        leader: '',
-      },
-      resultField: 'data.data',
-      labelField: 'trans',
-      valueField: 'id',
-    },
-  },
-  {
-    field: 'positionId',
-    label: t('sys.position.userPosition'),
-    component: 'ApiMultipleSelect',
-    required: true,
-    componentProps: {
-      api: getPositionList,
-      params: {
-        page: 1,
-        pageSize: 1000,
-        name: '',
-      },
-      resultField: 'data.data',
-      labelField: 'trans',
-      valueField: 'id',
-    },
-  },
+  // {
+  //   field: 'departmentId',
+  //   label: t('sys.department.userDepartment'),
+  //   component: 'ApiTreeSelect',
+  //   required: true,
+  //   componentProps: {
+  //     api: getDepartmentList,
+  //     params: {
+  //       page: 1,
+  //       pageSize: 1000,
+  //       name: '',
+  //       leader: '',
+  //     },
+  //     resultField: 'data.data',
+  //     labelField: 'trans',
+  //     valueField: 'id',
+  //   },
+  // },
+  // {
+  //   field: 'positionId',
+  //   label: t('sys.position.userPosition'),
+  //   component: 'ApiMultipleSelect',
+  //   required: true,
+  //   componentProps: {
+  //     api: getPositionList,
+  //     params: {
+  //       page: 1,
+  //       pageSize: 1000,
+  //       name: '',
+  //     },
+  //     resultField: 'data.data',
+  //     labelField: 'trans',
+  //     valueField: 'id',
+  //   },
+  // },
   {
     field: 'status',
     label: t('common.status'),
