@@ -119,18 +119,18 @@ export const searchFormSchema: FormSchema[] = [
 ];
 
 export const formSchema: FormSchema[] = [
-  {
-    field: 'avatar',
-    label: t('sys.user.avatar'),
-    defaultValue: '',
-    component: 'CropperAvatar',
-    show: true,
-    componentProps: {
-      uploadApi: uploadApi,
-      btnText: t('sys.user.changeAvatar'),
-      width: 100,
-    },
-  },
+  // {
+  //   field: 'avatar',
+  //   label: t('sys.user.avatar'),
+  //   defaultValue: '',
+  //   component: 'CropperAvatar',
+  //   show: true,
+  //   componentProps: {
+  //     uploadApi: uploadApi,
+  //     btnText: t('sys.user.changeAvatar'),
+  //     width: 100,
+  //   },
+  // },
   {
     field: 'id',
     label: 'ID',
